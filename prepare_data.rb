@@ -34,7 +34,8 @@ command :prepare_for_recommendation do |c|
         person = {
           id: person['employeeId'],
           name: person['preferredName'],
-          role: person['role']['name']
+          role: person['role']['name'],
+          grade: person['grade']['name']
         }
         puts "Importing #{person[:name]}..."
         write_person(person, people_file)
@@ -68,5 +69,5 @@ command :prepare_for_recommendation do |c|
 end
 
 def write_person(person, file)
-  file.write("#{person[:id]},#{person[:name]},#{person[:role]}\n")
+  file.write("#{person[:id]},#{person[:name]},#{person[:role]},#{person[:grade]}\n")
 end
